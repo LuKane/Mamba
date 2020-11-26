@@ -9,14 +9,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    private var tempLayer: CALayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
-        
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        view.backgroundColor = .orange
     }
 }
 

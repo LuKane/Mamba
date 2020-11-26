@@ -71,4 +71,61 @@ extension CALayer {
             frame.size.height = newValue
         }
     }
+    /// Shortcut center
+    public var center: CGPoint {
+        get {
+            return CGPoint(x: frame.origin.x + frame.size.width * 0.5, y: frame.origin.y + frame.size.height * 0.5)
+        }
+        set {
+            var fra = frame
+            fra.origin.x = newValue.x - fra.size.width * 0.5
+            fra.origin.y = newValue.y - fra.size.height * 0.5
+            frame = fra
+        }
+    }
+    /// Shortcut centerX
+    public var centerX: CGFloat {
+        get {
+            return frame.origin.x + frame.size.width * 0.5
+        }
+        set {
+            var fra = frame
+            fra.origin.x = newValue - fra.size.width * 0.5
+            frame = fra
+        }
+    }
+    /// Shortcut centerY
+    public var centerY: CGFloat {
+        get {
+            return frame.origin.y + frame.size.height * 0.5
+        }
+        set {
+            var fra = frame
+            fra.origin.y = newValue - fra.size.height * 0.5
+            frame = fra
+        }
+    }
+    /// Shortcut origin
+    public var origin: CGPoint {
+        get {
+            return frame.origin
+        }
+        set {
+            var fra = frame
+            fra.origin = newValue
+            frame = fra
+        }
+    }
+    /// Shortcut size
+    public var size: CGSize {
+        get {
+            return frame.size
+        }
+        set {
+            var fra = frame
+            fra.size = newValue
+            frame = fra
+        }
+    }
+    
 }
