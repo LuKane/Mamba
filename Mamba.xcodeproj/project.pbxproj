@@ -15,6 +15,8 @@
 		7967B809256E5AC700095AA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7967B807256E5AC700095AA7 /* LaunchScreen.storyboard */; };
 		7967B814256E5AC800095AA7 /* MambaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7967B813256E5AC800095AA7 /* MambaTests.swift */; };
 		7967B81F256E5AC800095AA7 /* MambaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7967B81E256E5AC800095AA7 /* MambaUITests.swift */; };
+		79DB764B256F96E300F9C7A5 /* UIImage+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DB764A256F96E300F9C7A5 /* UIImage+Mamba.swift */; };
+		79EE88B9256F76BD0095F9FA /* UIColor+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE88B8256F76BD0095F9FA /* UIColor+Mamba.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		7967B81A256E5AC800095AA7 /* MambaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MambaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7967B81E256E5AC800095AA7 /* MambaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MambaUITests.swift; sourceTree = "<group>"; };
 		7967B820256E5AC800095AA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79DB764A256F96E300F9C7A5 /* UIImage+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Mamba.swift"; sourceTree = "<group>"; };
+		79EE88B8256F76BD0095F9FA /* UIColor+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Mamba.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				79329878256F55A100300592 /* CALayer+Mamba.swift */,
+				79EE88B8256F76BD0095F9FA /* UIColor+Mamba.swift */,
+				79DB764A256F96E300F9C7A5 /* UIImage+Mamba.swift */,
 			);
 			path = Kind;
 			sourceTree = "<group>";
@@ -274,6 +280,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79EE88B9256F76BD0095F9FA /* UIColor+Mamba.swift in Sources */,
+				79DB764B256F96E300F9C7A5 /* UIImage+Mamba.swift in Sources */,
 				7967B801256E5AC500095AA7 /* ViewController.swift in Sources */,
 				7967B7FD256E5AC500095AA7 /* AppDelegate.swift in Sources */,
 				79329879256F55A100300592 /* CALayer+Mamba.swift in Sources */,
