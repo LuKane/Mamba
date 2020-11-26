@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79329879256F55A100300592 /* CALayer+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79329878256F55A100300592 /* CALayer+Mamba.swift */; };
 		7967B7FD256E5AC500095AA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7967B7FC256E5AC500095AA7 /* AppDelegate.swift */; };
 		7967B801256E5AC500095AA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7967B800256E5AC500095AA7 /* ViewController.swift */; };
 		7967B804256E5AC500095AA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7967B802256E5AC500095AA7 /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		79329878256F55A100300592 /* CALayer+Mamba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Mamba.swift"; sourceTree = "<group>"; };
 		7967B7F9256E5AC500095AA7 /* Mamba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mamba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7967B7FC256E5AC500095AA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7967B800256E5AC500095AA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79329876256F55A100300592 /* Mamba */ = {
+			isa = PBXGroup;
+			children = (
+				79329877256F55A100300592 /* Kind */,
+			);
+			path = Mamba;
+			sourceTree = "<group>";
+		};
+		79329877256F55A100300592 /* Kind */ = {
+			isa = PBXGroup;
+			children = (
+				79329878256F55A100300592 /* CALayer+Mamba.swift */,
+			);
+			path = Kind;
+			sourceTree = "<group>";
+		};
 		7967B7F0256E5AC500095AA7 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +117,7 @@
 			children = (
 				7967B7FC256E5AC500095AA7 /* AppDelegate.swift */,
 				7967B800256E5AC500095AA7 /* ViewController.swift */,
+				79329876256F55A100300592 /* Mamba */,
 				7967B802256E5AC500095AA7 /* Main.storyboard */,
 				7967B805256E5AC700095AA7 /* Assets.xcassets */,
 				7967B807256E5AC700095AA7 /* LaunchScreen.storyboard */,
@@ -257,6 +276,7 @@
 			files = (
 				7967B801256E5AC500095AA7 /* ViewController.swift in Sources */,
 				7967B7FD256E5AC500095AA7 /* AppDelegate.swift in Sources */,
+				79329879256F55A100300592 /* CALayer+Mamba.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
