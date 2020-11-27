@@ -8,12 +8,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    private var tempLayer: CALayer!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
+        view.backgroundColor = .white
     }
 }
 

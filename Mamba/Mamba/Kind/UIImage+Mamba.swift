@@ -7,6 +7,17 @@
 
 import UIKit
 
+enum ImageFormat {
+    case Unknow
+    case JPEG
+    case PNG
+    case GIF
+    case TIFF
+    case WebP
+    case HEIC
+    case HEIF
+}
+
 extension UIImage {
     
     /// create image with color (size: default is (1,1))
@@ -181,5 +192,40 @@ extension UIImage {
         
         ciImage = ciImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
         return UIImage(ciImage: ciImage)
+    }
+    
+    /********************************** * == Type == * ****************************************/
+    class func imageFormatData(data: Data) -> ImageFormat {
+        var buffer = [UInt8](repeating: 0, count: 1)
+        data.copyBytes(to: &buffer, count: 1)
+        
+        switch buffer {
+            case [0xFF]:
+                return .JPEG
+            case [0x89]:
+                return .PNG
+            case [0x47]:
+                return .GIF
+            case [0x49],[0x4D]:
+                return .TIFF
+            case [0x52] where data.count >= 12:
+                if let str = String(data: data[0...11],encoding: .ascii), str.hasPrefix("RIFF"), str.hasSuffix("WEBP") {
+                    return .WebP
+                }
+            case [0x00] where data.count >= 12:
+                if let str = String(data: data[8...11], encoding: .ascii) {
+                    let HEICBitMaps = Set(["heic", "heis", "heix", "hevc", "hevx"])
+                    if HEICBitMaps.contains(str) {
+                        return .HEIC
+                    }
+                    let HEIFBitMaps = Set(["mif1", "msf1"])
+                    if HEIFBitMaps.contains(str) {
+                        return .HEIF
+                    }
+                }
+            default:
+                break
+        }
+        return .Unknow
     }
 }
