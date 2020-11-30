@@ -139,7 +139,7 @@ extension UIDevice {
     
     /// device >= iPhoneX
     /// - Returns: has or not
-    class func deviceHasFringe() -> Bool {
+    class func device_hasFringe() -> Bool {
         let type = deviceType()
         if type == "iPhone X" || type == "iPhone XS" || type == "iPhone XS Max" || type == "iPhone XR" || type == "iPhone 11" || type == "iPhone 11 Pro" || type == "iPhone 11 Pro Max" || type == "iPhone 12 mini" || type == "iPhone 12" || type == "iPhone 12 Pro" || type == "iPhone 12 Pro Max" {
             return true
@@ -275,5 +275,61 @@ extension UIDevice {
                 }
             }
         }
+    }
+    
+    /// device is iPad
+    /// - Returns: is iPad
+    class func device_isPad() -> Bool {
+        return UIDevice.current.model == "iPad"
+    }
+    
+    /// device is Simulator
+    /// - Returns: is or not
+    class func device_isSimulator() -> Bool {
+        #if arch(i386) || arch(x86_64)
+            return true
+        #else
+            return false
+        #endif
+    }
+    
+    /// device is jailbroken
+    /// - Returns: is or not
+    class func device_isJailBroken() -> Bool {
+        return jailBroken() || sandboxBreached() || evidenceOfSymbolLinking()
+    }
+    
+    private class func jailBroken() -> Bool {
+        let jailbreakFilePaths = [
+            "/Applications/Cydia.app",
+            "/Library/MobileSubstrate/MobileSubstrate.dylib",
+            "/bin/bash",
+            "/usr/sbin/sshd",
+            "/etc/apt",
+            "/private/var/lib/apt/"
+        ]
+        return jailbreakFilePaths.contains { (path) -> Bool in
+            if FileManager.default.fileExists(atPath: path) {
+                return true
+            }
+            if let file = fopen(path, "r") {
+                fclose(file)
+                return true
+            }
+            return false
+        }
+    }
+    private class func sandboxBreached() -> Bool {
+        guard (try? " ".write(toFile: "/private/jailbreak.txt", atomically: true, encoding: .utf8)) == nil else {
+            return true
+        }
+        return false
+    }
+    private class func evidenceOfSymbolLinking() -> Bool {
+        var s = stat()
+        guard lstat("/Applications", &s) == 0 else {
+            return false
+        }
+        return (s.st_mode & S_IFLNK == S_IFLNK)
     }
 }
