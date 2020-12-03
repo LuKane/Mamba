@@ -28,7 +28,7 @@ extension Float {
 }
 
 extension String {
-    /// lowercased() md5
+    /// lowercased md5
     /// - Returns: md5 string
     func md5() -> String {
         if let data = cString(using: .utf8) {
@@ -184,7 +184,7 @@ extension String {
         return replacingCharacters(in: range, with: "*")
     }
     
-    /// mask to phone number
+    /// mask to phone number [18800004444 ==> 188****4444]
     /// - Returns: mask string
     func stringPhoneNumMask() -> String {
         guard isEmpty == false else {
@@ -266,4 +266,19 @@ extension String {
         price.append(zero)
         return price
     }
+    
+    /*****************************************************************************/
+    
+    /// string transform to Data
+    /// - Returns: data?
+    func stringToData() -> Data? {
+        return data(using: .utf8, allowLossyConversion: true)
+    }
+    
+    /// string transform to NSData
+    /// - Returns: NSData?
+    func stringToNSData() -> NSData? {
+        return stringToData() as NSData?
+    }
+    
 }

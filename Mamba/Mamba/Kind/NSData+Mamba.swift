@@ -29,4 +29,23 @@ extension NSData {
         }
         return string
     }
+    
+    /// data transform to string
+    /// - Returns: string
+    func dataToString() -> String {
+        return NSString(bytes: bytes, length: length, encoding: String.Encoding.utf8.rawValue)! as String
+    }
+    
+    /// data to base64
+    /// - Returns: string
+    func dataToBase64String() -> String {
+        return self.base64EncodedString(options: .init(rawValue: 0))
+    }
+    
+    /// data from base64
+    /// - Parameter base64EncodedString: base64
+    /// - Returns: string
+    func dataFromBase64String(base64EncodedString: String) -> NSData? {
+        return NSData(base64Encoded: base64EncodedString, options: .init(rawValue: 0))
+    }
 }
