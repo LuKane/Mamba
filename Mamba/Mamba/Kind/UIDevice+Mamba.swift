@@ -11,8 +11,13 @@ import CoreTelephony
 import Photos
 import AVFoundation
 
+enum VersionCompare {
+    case first
+    case last
+    case equal
+}
+
 extension UIDevice {
-    
     /// device name
     /// - Returns: name
     class func deviceName() -> String {
@@ -331,5 +336,38 @@ extension UIDevice {
             return false
         }
         return (s.st_mode & S_IFLNK == S_IFLNK)
+    }
+    
+    /// compare two version
+    /// - Parameters:
+    ///   - versionF: version first
+    ///   - versionL: version last
+    /// - Returns: result of compare
+    class func deviceCompareVersion(_ versionF: String, versionL: String) -> VersionCompare {
+        
+        let listF = versionF.components(separatedBy: ".")
+        let listL = versionL.components(separatedBy: ".")
+        
+        var count = listF.count
+        if listF.count < listL.count {
+            count = listL.count
+        }
+        
+        for index in 0..<count {
+            var a = 0, b = 0
+            if index < listF.count {
+                a = Int(listF[index])!
+            }
+            if index < listL.count {
+                b = Int(listL[index])!
+            }
+            
+            if a > b {
+                return .first
+            }else if a < b {
+                return .last
+            }
+        }
+        return .equal
     }
 }
