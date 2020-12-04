@@ -6,9 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
 extension Date {
-    
     /// current year[2020]
     /// - Returns: year
     func year() -> Int {
@@ -50,4 +50,29 @@ extension Date {
     func nanosecond() -> Int {
         return Calendar.current.dateComponents([Calendar.Component.nanosecond], from: self).nanosecond ?? 0
     }
+    
+    /*****************************************************************************/
+    
+    /// date from string
+    /// - Parameters:
+    ///   - dateString: string
+    ///   - format: format
+    /// - Returns: date
+    static func dateFromString(_ dateString: String, format: String) -> Date? {
+        let dateFormat = DateFormatter.init()
+        dateFormat.dateFormat = format
+        return dateFormat.date(from: dateString)
+    }
+    
+    /// date to string
+    /// - Parameter format: format
+    /// - Returns: string
+    func dateToString(format: String) -> String {
+        let dateFormat = DateFormatter.init()
+        dateFormat.dateFormat = format
+        return dateFormat.string(from: self)
+    }
+    
+    
+    
 }
