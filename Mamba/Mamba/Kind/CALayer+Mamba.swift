@@ -8,7 +8,6 @@
 import UIKit
 
 extension CALayer {
-    
     /// Shortcut frame.origin.x
     public var x: CGFloat {
         get {
@@ -127,5 +126,4 @@ extension CALayer {
             frame = fra
         }
     }
-    
 }

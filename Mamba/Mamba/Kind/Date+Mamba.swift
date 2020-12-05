@@ -73,6 +73,13 @@ extension Date {
         return dateFormat.string(from: self)
     }
     
+    /// date to Time zone date [the normal date will add eight hour zone : 2000-11-11 12:00:00  ==> 2000-11-11 20:00:00]
+    /// - Returns: time zone date
+    func dateToTimeZone() -> Date {
+        let time = TimeZone.current.secondsFromGMT(for: self)
+        return addingTimeInterval(TimeInterval(time))
+    }
+    
     /*****************************************************************************/
     
     /// is the same year compare to otherDate
@@ -181,4 +188,79 @@ extension Date {
         }
         return false
     }
+    
+    /// is leap year or not
+    /// - Returns: is leap year or not
+    func isLeapYear() -> Bool {
+        let year = self.year()
+        if year % 400 == 0 {
+            return true
+        }
+        if year % 100 != 0 && year % 4 == 0 {
+            return true
+        }
+        return false
+    }
+    
+    /*****************************************************************************/
+    
+    /// adding years from date
+    /// - Parameter years: years
+    /// - Returns: new date
+    func dateAddingYears(years: Int) -> Date? {
+        var components = DateComponents.init()
+        components.year = years
+        return Calendar.current.date(byAdding: components, to: self)
+    }
+    
+    /// adding months from date
+    /// - Parameter months: months
+    /// - Returns: new date
+    func dateAddingMonths(months: Int) -> Date? {
+        var components = DateComponents.init()
+        components.month = months
+        return Calendar.current.date(byAdding: components, to: self)
+    }
+    
+    /// adding weeks from date
+    /// - Parameter weeks: weeks
+    /// - Returns: new date
+    func dateAddingWeeks(weeks: Int) -> Date? {
+        var components = DateComponents.init()
+        components.weekOfYear = weeks
+        return Calendar.current.date(byAdding: components, to: self)
+    }
+    
+    /// adding days from date
+    /// - Parameter days: days
+    /// - Returns: new date
+    func dateAddingDays(days: Int) -> Date {
+        let timeInterval = timeIntervalSinceReferenceDate + TimeInterval(24 * 60 * 60 * days)
+        return Date.init(timeIntervalSinceReferenceDate: timeInterval)
+    }
+    
+    /// adding hours from date
+    /// - Parameter hours: hours
+    /// - Returns: new date
+    func dateAddingHours(hours: Int) -> Date {
+        let timeInterval = timeIntervalSinceReferenceDate + TimeInterval(60 * 60 * hours)
+        return Date.init(timeIntervalSinceReferenceDate: timeInterval)
+    }
+    
+    /// add mins from date
+    /// - Parameter mins: mins
+    /// - Returns: new date
+    func dateAddingMin(mins: Int) -> Date {
+        let timeInterval = timeIntervalSinceReferenceDate + TimeInterval(60 * mins)
+        return Date.init(timeIntervalSinceReferenceDate: timeInterval)
+    }
+    
+    /// adding seconds from date
+    /// - Parameter seconds: seconds
+    /// - Returns: new date
+    func dateAddingSeconds(seconds: Int) -> Date {
+        let timeInterval = timeIntervalSinceReferenceDate + TimeInterval(seconds)
+        return Date.init(timeIntervalSinceReferenceDate: timeInterval)
+    }
+    
 }
