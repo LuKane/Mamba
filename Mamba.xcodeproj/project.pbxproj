@@ -10,6 +10,8 @@
 		79329879256F55A100300592 /* CALayer+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79329878256F55A100300592 /* CALayer+Mamba.swift */; };
 		793D2A82257731E2003F3D9C /* String+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793D2A81257731E2003F3D9C /* String+Mamba.swift */; };
 		793D2A8725773F93003F3D9C /* NSData+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793D2A8625773F93003F3D9C /* NSData+Mamba.swift */; };
+		794386112579CE5700399D4B /* Date+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 794386102579CE5700399D4B /* Date+Mamba.swift */; };
+		79438619257A279900399D4B /* NSDictionary+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79438618257A279900399D4B /* NSDictionary+Mamba.swift */; };
 		7967B7FD256E5AC500095AA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7967B7FC256E5AC500095AA7 /* AppDelegate.swift */; };
 		7967B801256E5AC500095AA7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7967B800256E5AC500095AA7 /* ViewController.swift */; };
 		7967B804256E5AC500095AA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7967B802256E5AC500095AA7 /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		79329878256F55A100300592 /* CALayer+Mamba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+Mamba.swift"; sourceTree = "<group>"; };
 		793D2A81257731E2003F3D9C /* String+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Mamba.swift"; sourceTree = "<group>"; };
 		793D2A8625773F93003F3D9C /* NSData+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Mamba.swift"; sourceTree = "<group>"; };
+		794386102579CE5700399D4B /* Date+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Mamba.swift"; sourceTree = "<group>"; };
+		79438618257A279900399D4B /* NSDictionary+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDictionary+Mamba.swift"; sourceTree = "<group>"; };
 		7967B7F9256E5AC500095AA7 /* Mamba.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mamba.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7967B7FC256E5AC500095AA7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7967B800256E5AC500095AA7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,15 +110,17 @@
 			isa = PBXGroup;
 			children = (
 				79329878256F55A100300592 /* CALayer+Mamba.swift */,
+				79FB16D325710E2F0093693A /* UIView+Mamba.swift */,
 				79EE88B8256F76BD0095F9FA /* UIColor+Mamba.swift */,
 				79DB764A256F96E300F9C7A5 /* UIImage+Mamba.swift */,
-				79FB16D325710E2F0093693A /* UIView+Mamba.swift */,
 				79FB16EA257113B50093693A /* UIScrollView+Mamba.swift */,
 				796A52452572818E00998817 /* UITextField+Mamba.swift */,
 				79D7E6402574A09900655A5D /* UIDevice+Mamba.swift */,
 				79D7E64725750ECB00655A5D /* NSObject+Mamba.swift */,
 				793D2A81257731E2003F3D9C /* String+Mamba.swift */,
 				793D2A8625773F93003F3D9C /* NSData+Mamba.swift */,
+				79438618257A279900399D4B /* NSDictionary+Mamba.swift */,
+				794386102579CE5700399D4B /* Date+Mamba.swift */,
 			);
 			path = Kind;
 			sourceTree = "<group>";
@@ -301,6 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				794386112579CE5700399D4B /* Date+Mamba.swift in Sources */,
+				79438619257A279900399D4B /* NSDictionary+Mamba.swift in Sources */,
 				79D7E64825750ECB00655A5D /* NSObject+Mamba.swift in Sources */,
 				79EE88B9256F76BD0095F9FA /* UIColor+Mamba.swift in Sources */,
 				79D7E6412574A09900655A5D /* UIDevice+Mamba.swift in Sources */,
