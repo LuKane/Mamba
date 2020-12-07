@@ -148,11 +148,10 @@ extension UIView {
     
     /// Get current UIScreen UI of SnapShot
     /// - Returns: image
-    public func snapShotImage() -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
-        layer.render(in: UIGraphicsGetCurrentContext()!)
-        let snap = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return snap
+    public func snapShotImage() -> UIImage {
+        let render = UIGraphicsImageRenderer.init(bounds: bounds)
+        return render.image { (context) in
+            layer.render(in: context.cgContext)
+        }
     }
 }
