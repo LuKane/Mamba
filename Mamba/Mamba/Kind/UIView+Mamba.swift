@@ -154,4 +154,20 @@ extension UIView {
             layer.render(in: context.cgContext)
         }
     }
+    
+    /********************************** * == corner == * ****************************************/
+    
+    /// add corners [view.corners(corners: [UIRectCorner.topLeft,UIRectCorner.topRight], cornerRadius: 10)]
+    /// - Parameters:
+    ///   - corners: corners
+    ///   - cornerRadius: radius
+    /// - Returns: void
+    public func corners(corners: UIRectCorner, cornerRadius: CGFloat) -> Void {
+        let maskPath : UIBezierPath = UIBezierPath.init(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
+        let maskLayer : CAShapeLayer = CAShapeLayer.init()
+        maskLayer.frame = bounds
+        maskLayer.path  = maskPath.cgPath
+        layer.mask      = maskLayer
+    }
+    /********************************** * == corner == * ****************************************/
 }
