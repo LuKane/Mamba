@@ -146,6 +146,21 @@ extension UIView {
         return nil
     }
     
+    /// layer shadow
+    /// - Parameters:
+    ///   - color: color
+    ///   - offset: offset ,Default (0,-3)
+    ///   - radius: blur radius used to create the shadow. Defaults to 3. Animatable.
+    /// - Returns: void
+    public func layerShadow(color: UIColor, offset: CGSize, radius: CGFloat) -> Void {
+        layer.shadowColor = color.cgColor
+        layer.shadowOffset = offset
+        layer.shadowRadius = radius
+        layer.shadowOpacity = 1
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.main.scale
+    }
+    
     /// Get current UIScreen UI of SnapShot
     /// - Returns: image
     public func snapShotImage() -> UIImage {
