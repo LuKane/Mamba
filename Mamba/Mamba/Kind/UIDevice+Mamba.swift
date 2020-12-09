@@ -10,6 +10,8 @@ import UIKit
 import CoreTelephony
 import Photos
 import AVFoundation
+import Contacts
+import EventKit
 
 enum VersionCompare {
     case first
@@ -280,6 +282,66 @@ extension UIDevice {
                 }
             }
         }
+    }
+    
+    /// get device camera auth [NotDetermined will return false]
+    /// - Returns: is allowed or not
+    class func deviceCameraAuth() -> Bool {
+        let authStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        if authStatus == .authorized {
+            return true
+        }
+        return false
+    }
+    
+    /// get device album auth [NotDetermined will return false]
+    /// - Returns: is allowed or not
+    class func deviceAlbumAuth() -> Bool {
+        let status = PHPhotoLibrary.authorizationStatus()
+        if status == .authorized {
+            return true
+        }
+        return false
+    }
+    
+    /// get device address book auth [NotDetermined will return false]
+    /// - Returns: is allowed or not
+    class func deviceAddressBookAuth() -> Bool {
+        let status = CNContactStore.authorizationStatus(for: .contacts)
+        if status == .authorized {
+            return true
+        }
+        return false
+    }
+    
+    /// get device microphone auth [NotDetermined will return false]
+    /// - Returns: is allowed or not
+    class func deviceMicrophoneAuth() -> Bool {
+        let status = AVCaptureDevice.authorizationStatus(for: .audio)
+        if status == .authorized {
+            return true
+        }
+        return false
+    }
+    
+    /// get device Calendar auth [NotDetermined will return false]
+    /// - Returns: is allowed or not
+    class func deviceCalendarAuth() -> Bool {
+        let status = EKEventStore.authorizationStatus(for: .event)
+        if status == .authorized {
+            return true
+        }
+        return false
+    }
+    
+    /// get device location Service auth [NotDetermined will return false , authorizedAlways || authorizedWhenInUse will return true]
+    /// - Returns: is allowed or not
+    class func deviceLocationServiceAuth() -> Bool {
+        let status = CLLocationManager.authorizationStatus()
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            return true
+        }
+        return false
     }
     
     /// device is iPad
