@@ -123,6 +123,35 @@ extension UIImage {
         return resultImage
     }
     
+    /// create image with image, set radius and size
+    /// - Parameters:
+    ///   - image: original image
+    ///   - radius: radius
+    ///   - size: size
+    /// - Returns: new image
+    class func imageCreated(image: UIImage, radius: CGFloat, size: CGSize) -> UIImage? {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        let context = UIGraphicsGetCurrentContext()
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: .allCorners, cornerRadii: CGSize(width: radius, height: radius))
+        context?.addPath(path.cgPath)
+        context?.clip()
+        image.draw(in: rect)
+        context?.drawPath(using: .fillStroke)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+    
+    /// create image with image, set radius [size is image's size]
+    /// - Parameters:
+    ///   - image: image
+    ///   - radius: radius
+    /// - Returns: new image
+    class func imageCreated(image: UIImage, radius: CGFloat) -> UIImage? {
+        return imageCreated(image: image, radius: radius, size: image.size)
+    }
+    
     /// create QRCode image with content
     /// - Parameters:
     ///   - content: content
