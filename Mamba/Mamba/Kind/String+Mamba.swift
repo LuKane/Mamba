@@ -280,5 +280,14 @@ extension String {
     func stringToNSData() -> NSData? {
         return stringToData() as NSData?
     }
-    
+}
+
+extension String {
+    /// filter Identity card string with [0-9 Xx]
+    /// - Returns: identity string
+    func filterIdentity() -> String {
+        let ALPHANUM = "xX0123456789"
+        let cs = CharacterSet.init(charactersIn: ALPHANUM).inverted
+        return components(separatedBy: cs).joined(separator: "")
+    }
 }
