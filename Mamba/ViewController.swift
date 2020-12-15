@@ -11,6 +11,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
+        edgesForExtendedLayout = UIRectEdge.init(rawValue: 0)
         view.backgroundColor = .orange
     }
 }
+
+
+
