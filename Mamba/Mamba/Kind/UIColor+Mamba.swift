@@ -87,7 +87,7 @@ extension UIColor {
     
     /*****************************************************************************/
     /// get red value of Current color
-    var red: CGFloat {
+    var redValue: CGFloat {
         get {
             var r: CGFloat = 0.0
             var g: CGFloat = 0.0
@@ -98,7 +98,7 @@ extension UIColor {
         }
     }
     /// get blue value of Current color
-    var blue: CGFloat {
+    var blueValue: CGFloat {
         get {
             var r: CGFloat = 0.0
             var g: CGFloat = 0.0
@@ -109,7 +109,7 @@ extension UIColor {
         }
     }
     /// get green value of Current color
-    var green: CGFloat {
+    var greenValue: CGFloat {
         get {
             var r: CGFloat = 0.0
             var g: CGFloat = 0.0
@@ -120,7 +120,7 @@ extension UIColor {
         }
     }
     /// get alpha value of Current color
-    var alpha: CGFloat {
+    var alphaValue: CGFloat {
         get {
             return cgColor.alpha
         }
