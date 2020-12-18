@@ -15,7 +15,7 @@ extension UIControl {
     /// UIControl addTarget with event and callBack
     /// - Parameters:
     ///   - event: event
-    ///   - callBack: callBack
+    ///   - callBack: callBack [eg: UIControl as (button as! UIButton)]
     /// - Returns: Void
     func addTarget(event: UIControl.Event, callBack: ((UIControl) -> Void)?) -> Void {
         objc_setAssociatedObject(self, &AssociateKeys.key, callBack, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

@@ -199,17 +199,13 @@ extension UIImage {
         guard size.height != 0 else {
             return nil
         }
-        
         guard content?.isEmpty == false else {
             return nil
         }
-        
         guard let filter = CIFilter.init(name: "CICode128BarcodeGenerator") else {
             return nil
         }
-        
         filter.setValue(content!.data(using: .utf8), forKeyPath: "inputMessage")
-        
         guard (filter.outputImage != nil) else {
             return nil
         }
