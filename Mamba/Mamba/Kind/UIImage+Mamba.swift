@@ -219,7 +219,6 @@ extension UIImage {
         return UIImage(ciImage: ciImage)
     }
     
-    /********************************** * == Type == * ****************************************/
     class func imageFormatData(data: Data) -> ImageFormat {
         var buffer = [UInt8](repeating: 0, count: 1)
         data.copyBytes(to: &buffer, count: 1)
@@ -252,5 +251,25 @@ extension UIImage {
                 break
         }
         return .Unknow
+    }
+    
+    /// return image size from image url
+    /// - Parameter url: url
+    /// - Returns: width and height
+    class func imageSizeFrom(url: String?) -> CGSize {
+        guard url != nil else {
+            return .zero
+        }
+        let imageSourceRef = CGImageSourceCreateWithURL(NSURL(string: url!)!, nil)
+        var width: CGFloat = 0.0, height: CGFloat = 0.0
+        if imageSourceRef != nil {
+            let imageProperties = CGImageSourceCopyPropertiesAtIndex(imageSourceRef!, 0, nil)
+            if let imageD = imageProperties {
+                let imageDict = imageD as Dictionary
+                width  = imageDict[kCGImagePropertyPixelWidth] as! CGFloat
+                height = imageDict[kCGImagePropertyPixelHeight] as! CGFloat
+            }
+        }
+        return CGSize(width: width, height: height)
     }
 }
