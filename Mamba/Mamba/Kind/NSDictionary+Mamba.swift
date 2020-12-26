@@ -34,3 +34,14 @@ extension NSDictionary {
         return [String: Any]()
     }
 }
+
+extension Dictionary {
+    
+    /// merge two dict [change the first dict]
+    /// - Parameter dict: dict
+    mutating func merge(dict: [Key: Value]){
+        for (k, v) in dict {
+            updateValue(v, forKey: k)
+        }
+    }
+}
