@@ -129,8 +129,8 @@ extension UIView {
     
     /// remove subviews
     public func removeAllSubViews() -> Void {
-        for obj in 0..<subviews.count {
-            subviews[obj].removeFromSuperview()
+        subviews.forEach { (v) in
+            v.removeFromSuperview()
         }
     }
     /// get current responder controller
@@ -170,8 +170,6 @@ extension UIView {
         }
     }
     
-    /********************************** * == corner == * ****************************************/
-    
     /// add corners [view.corners(corners: [UIRectCorner.topLeft,UIRectCorner.topRight], cornerRadius: 10)]
     /// - Parameters:
     ///   - corners: corners
@@ -184,5 +182,4 @@ extension UIView {
         maskLayer.path  = maskPath.cgPath
         layer.mask      = maskLayer
     }
-    /********************************** * == corner == * ****************************************/
 }

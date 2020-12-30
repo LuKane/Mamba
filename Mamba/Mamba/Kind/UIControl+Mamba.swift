@@ -27,4 +27,12 @@ extension UIControl {
             callBack(control)
         }
     }
+    
+    /// remove All targets
+    /// - Returns: Void
+    func removeAllTargets() -> Void {
+        for target in allTargets {
+            removeTarget(target, action: nil, for: .allEvents)
+        }
+    }
 }
