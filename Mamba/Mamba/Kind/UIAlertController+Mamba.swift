@@ -39,7 +39,7 @@ extension UIAlertController {
         })
     }
     
-    /// alert on viewcontroller with one action
+    /// alert on viewcontroller with two action
     /// - Parameters:
     ///   - title: title
     ///   - message: message
@@ -51,7 +51,7 @@ extension UIAlertController {
         alert(title: title, message: message, leftActionTitle: leftActionTitle, rightActionTitle: rightActionTitle, presentOn: UIApplication.shared.keyWindow?.rootViewController, callBack: callBack)
     }
     
-    /// alert on viewcontroller with one action
+    /// alert on viewcontroller with two action
     /// - Parameters:
     ///   - title: title
     ///   - message: message
