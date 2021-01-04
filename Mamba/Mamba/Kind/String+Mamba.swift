@@ -115,6 +115,27 @@ extension String {
         return ""
     }
     
+    /// trun the chinese word to pinyin
+    /// - Returns: pinyin
+    func pinyin() -> String {
+        let str = NSMutableString.init(string: self)
+        CFStringTransform(str, nil, kCFStringTransformMandarinLatin, false)
+        CFStringTransform(str, nil, kCFStringTransformStripDiacritics, false)
+        return String.init(str)
+    }
+    
+    /// trun the chinese word to pinyin (but get the first letter.) [ninhao : nh]
+    /// - Returns: the first letter
+    func pinyinFirstWord() -> String {
+        let str = pinyin()
+        let arr = str.components(separatedBy: " ")
+        var tempArr = [String]()
+        for str: String in arr {
+            tempArr.append(String(str.prefix(1)))
+        }
+        return tempArr.joined(separator:" ")
+    }
+    
     /*****************************************************************************/
     /// insert space to string each four chars [1234 5678 9012 3456]
     /// - Returns: string
