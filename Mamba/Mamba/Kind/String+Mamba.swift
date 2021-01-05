@@ -7,6 +7,7 @@
 
 import Foundation
 import CommonCrypto
+import UIKit
 
 extension Double {
     /// rounding of Double . ( 19.556   ===>  19.56  ||  19.544   ===>   19.54)
@@ -304,6 +305,23 @@ extension String {
 }
 
 extension String {
+    ///    if textField == privateIDCardField {
+    ///        let str1 = string.components(separatedBy: CharacterSet.whitespaces)
+    ///        let str2 = str1.joined(separator: "")
+    ///        if str2 != string {
+    ///           return false;
+    ///        }
+    ///        let cs = CharacterSet.init(charactersIn: ALPHANUM).inverted
+    ///        let filtered = string.components(separatedBy: cs).joined(separator: "")
+    ///        if filtered != string {
+    ///           return false
+    ///        }
+    ///        if lengthcount! >= 18 && string.count > 0 {
+    ///           return false
+    ///        }else {
+    ///           return true
+    ///        }
+    ///     }
     /// filter Identity card string with [0-9 Xx]
     /// - Returns: identity string
     func filterIdentity() -> String {
