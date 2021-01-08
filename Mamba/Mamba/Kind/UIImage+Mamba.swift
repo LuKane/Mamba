@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Accelerate
+import QuartzCore
 
 enum ImageFormat {
     case Unknow
@@ -19,6 +21,57 @@ enum ImageFormat {
 }
 
 extension UIImage {
+    
+    /// update image blur [it is ready for png]
+    /// - Parameter blurOpacity: blur opacity
+    /// - Returns: image with blur
+    func imageUpdateBlur(blurOpacity: CGFloat) -> UIImage {
+        
+        var blur = blurOpacity
+        if blurOpacity > 1.0 {
+            blur = 1.0
+        }
+        if blurOpacity < 0.0 {
+            blur = 0.0
+        }
+        blur = blur * 40
+        
+        let size = blur - blur.truncatingRemainder(dividingBy: 2) + 1
+        
+        let img = self.cgImage
+        
+        let inProvide = img?.dataProvider
+        let inBitmapData = inProvide?.data
+        
+        let imgWidth  = vImagePixelCount((img?.width)!)
+        let imgHeight = vImagePixelCount((img?.height)!)
+        let imgRowBytes = img?.bytesPerRow
+        
+        let inData = UnsafeMutableRawPointer(mutating: CFDataGetBytePtr(inBitmapData))
+        let outData = malloc(img!.bytesPerRow * img!.height)
+        
+        var inBuffer  = vImage_Buffer(data:  inData, height: imgHeight, width: imgWidth, rowBytes: imgRowBytes!)
+        var outBuffer = vImage_Buffer(data: outData, height: imgHeight, width: imgWidth, rowBytes: imgRowBytes!)
+        
+        var error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, nil, 0, 0, UInt32(size), UInt32(size), nil, vImage_Flags(kvImageEdgeExtend))
+        
+        if error != kvImageNoError {
+            error = vImageBoxConvolve_ARGB8888(&outBuffer, &inBuffer, nil, 0, 0, UInt32(size), UInt32(size), nil, vImage_Flags(kvImageEdgeExtend))
+            if error != kvImageNoError {
+                error = vImageBoxConvolve_ARGB8888(&inBuffer, &outBuffer, nil, 0, 0, UInt32(size), UInt32(size), nil, vImage_Flags(kvImageEdgeExtend))
+            }
+        }
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
+        let context = CGContext.init(data: outBuffer.data, width: Int(outBuffer.width), height: Int(outBuffer.height), bitsPerComponent: 8, bytesPerRow: Int(outBuffer.rowBytes), space: colorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipLast.rawValue)
+        
+        var imageRef = context?.makeImage()
+        let bluredImage = UIImage.init(cgImage: imageRef!)
+        imageRef = nil
+        free(outData)
+        return bluredImage
+    }
     
     /// create image with color (size: default is (1,1))
     /// - Parameter color: color
@@ -219,36 +272,39 @@ extension UIImage {
         return UIImage(ciImage: ciImage)
     }
     
+    /// image from data [which kind image : jpeg, jpg, png....]
+    /// - Parameter data: data
+    /// - Returns: return image tyep
     class func imageFormatData(data: Data) -> ImageFormat {
         var buffer = [UInt8](repeating: 0, count: 1)
         data.copyBytes(to: &buffer, count: 1)
         
         switch buffer {
-            case [0xFF]:
-                return .JPEG
-            case [0x89]:
-                return .PNG
-            case [0x47]:
-                return .GIF
-            case [0x49],[0x4D]:
-                return .TIFF
-            case [0x52] where data.count >= 12:
-                if let str = String(data: data[0...11],encoding: .ascii), str.hasPrefix("RIFF"), str.hasSuffix("WEBP") {
-                    return .WebP
+        case [0xFF]:
+            return .JPEG
+        case [0x89]:
+            return .PNG
+        case [0x47]:
+            return .GIF
+        case [0x49],[0x4D]:
+            return .TIFF
+        case [0x52] where data.count >= 12:
+            if let str = String(data: data[0...11],encoding: .ascii), str.hasPrefix("RIFF"), str.hasSuffix("WEBP") {
+                return .WebP
+            }
+        case [0x00] where data.count >= 12:
+            if let str = String(data: data[8...11], encoding: .ascii) {
+                let HEICBitMaps = Set(["heic", "heis", "heix", "hevc", "hevx"])
+                if HEICBitMaps.contains(str) {
+                    return .HEIC
                 }
-            case [0x00] where data.count >= 12:
-                if let str = String(data: data[8...11], encoding: .ascii) {
-                    let HEICBitMaps = Set(["heic", "heis", "heix", "hevc", "hevx"])
-                    if HEICBitMaps.contains(str) {
-                        return .HEIC
-                    }
-                    let HEIFBitMaps = Set(["mif1", "msf1"])
-                    if HEIFBitMaps.contains(str) {
-                        return .HEIF
-                    }
+                let HEIFBitMaps = Set(["mif1", "msf1"])
+                if HEIFBitMaps.contains(str) {
+                    return .HEIF
                 }
-            default:
-                break
+            }
+        default:
+            break
         }
         return .Unknow
     }
@@ -272,4 +328,5 @@ extension UIImage {
         }
         return CGSize(width: width, height: height)
     }
+    
 }
