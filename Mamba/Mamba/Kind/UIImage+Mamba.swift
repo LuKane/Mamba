@@ -22,10 +22,10 @@ enum ImageFormat {
 
 extension UIImage {
     
-    /// update image blur [it is ready for png]
+    /// update image blur
     /// - Parameter blurOpacity: blur opacity
     /// - Returns: image with blur
-    func imageUpdateBlur(blurOpacity: CGFloat) -> UIImage {
+    func imageBlur(blurOpacity: CGFloat) -> UIImage {
         
         var blur = blurOpacity
         if blurOpacity > 1.0 {
@@ -34,6 +34,9 @@ extension UIImage {
         if blurOpacity < 0.0 {
             blur = 0.0
         }
+        
+        blur = 1 - blur
+        
         blur = blur * 40
         
         let size = blur - blur.truncatingRemainder(dividingBy: 2) + 1
