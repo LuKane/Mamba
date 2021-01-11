@@ -38,14 +38,17 @@ extension UIDevice {
         return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
     }
     
-    /* App name */
+    /// App name
+    /// - Returns: App name
     class func deviceAppName() -> String {
         let dict = Bundle.main.infoDictionary
         let displayName = dict!["CFBundleDisplayName"]
         let name =  dict!["CFBundleName"]
         return (displayName ?? name) as! String
     }
-    /* App current build version */
+    
+    /// App current build version
+    /// - Returns: App current build version
     class func deviceAppBuild() -> String {
         let dict = Bundle.main.infoDictionary
         let build = dict!["CFBundleVersion"] as! String
