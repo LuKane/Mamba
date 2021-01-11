@@ -9,6 +9,13 @@ import Foundation
 import UIKit
 
 extension Date {
+    
+    /// get current date [it is usually used together with function :    `dateToTimeZone()`]
+    /// - Returns: current date
+    public static func current() -> Date {
+        return self.init()
+    }
+    
     /// current year[2020]
     /// - Returns: year
     func year() -> Int {
