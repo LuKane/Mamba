@@ -337,8 +337,8 @@ extension UIImage {
     /// resize image size [default left is 0.5, top is 0.5]
     /// - Parameter name: image name
     /// - Returns: image
-    class func resizedImage(name: String) -> UIImage {
-        return resizedImage(name: name, left: 0.5, top: 0.5)
+    class func imageResized(name: String) -> UIImage {
+        return imageResized(name: name, left: 0.5, top: 0.5)
     }
     /// resize image size
     /// - Parameters:
@@ -346,7 +346,7 @@ extension UIImage {
     ///   - left: left
     ///   - top: top
     /// - Returns: image
-    class func resizedImage(name: String, left: CGFloat, top: CGFloat) -> UIImage {
+    class func imageResized(name: String, left: CGFloat, top: CGFloat) -> UIImage {
         let image: UIImage = UIImage.init(named: name)!
         return image.stretchableImage(withLeftCapWidth: Int(image.size.width * left), topCapHeight: Int(image.size.height * top))
     }
