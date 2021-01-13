@@ -21,6 +21,7 @@
 		7967B81F256E5AC800095AA7 /* MambaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7967B81E256E5AC800095AA7 /* MambaUITests.swift */; };
 		796A52462572818E00998817 /* UITextField+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796A52452572818E00998817 /* UITextField+Mamba.swift */; };
 		796E81662592E46A00B16F41 /* UIAlertController+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796E81652592E46A00B16F41 /* UIAlertController+Mamba.swift */; };
+		79796F4925AED4B200327956 /* UIButton+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79796F4825AED4B200327956 /* UIButton+Mamba.swift */; };
 		7987FE9A258B0A44005E56D3 /* UIControl+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7987FE99258B0A44005E56D3 /* UIControl+Mamba.swift */; };
 		7994E53D2580A24C0079432A /* UIBarButtonItem+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7994E53C2580A24C0079432A /* UIBarButtonItem+Mamba.swift */; };
 		799DFF0A2586FE7100BA6504 /* UIGestureRecognizer+Mamba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 799DFF092586FE7100BA6504 /* UIGestureRecognizer+Mamba.swift */; };
@@ -70,6 +71,7 @@
 		7967B820256E5AC800095AA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		796A52452572818E00998817 /* UITextField+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Mamba.swift"; sourceTree = "<group>"; };
 		796E81652592E46A00B16F41 /* UIAlertController+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Mamba.swift"; sourceTree = "<group>"; };
+		79796F4825AED4B200327956 /* UIButton+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Mamba.swift"; sourceTree = "<group>"; };
 		7987FE99258B0A44005E56D3 /* UIControl+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Mamba.swift"; sourceTree = "<group>"; };
 		7994E53C2580A24C0079432A /* UIBarButtonItem+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Mamba.swift"; sourceTree = "<group>"; };
 		799DFF092586FE7100BA6504 /* UIGestureRecognizer+Mamba.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Mamba.swift"; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				799DFF092586FE7100BA6504 /* UIGestureRecognizer+Mamba.swift */,
 				7987FE99258B0A44005E56D3 /* UIControl+Mamba.swift */,
 				796E81652592E46A00B16F41 /* UIAlertController+Mamba.swift */,
+				79796F4825AED4B200327956 /* UIButton+Mamba.swift */,
 			);
 			path = Kind;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				79D7E64825750ECB00655A5D /* NSObject+Mamba.swift in Sources */,
 				79EE88B9256F76BD0095F9FA /* UIColor+Mamba.swift in Sources */,
 				79D7E6412574A09900655A5D /* UIDevice+Mamba.swift in Sources */,
+				79796F4925AED4B200327956 /* UIButton+Mamba.swift in Sources */,
 				79DB764B256F96E300F9C7A5 /* UIImage+Mamba.swift in Sources */,
 				7987FE9A258B0A44005E56D3 /* UIControl+Mamba.swift in Sources */,
 				796A52462572818E00998817 /* UITextField+Mamba.swift in Sources */,
