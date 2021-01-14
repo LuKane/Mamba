@@ -40,6 +40,8 @@ extension UIButton {
             DispatchQueue.main.asyncAfter(deadline: .now() + Double(clickTime)) { [weak self] in
                 self?.isUserInteractionEnabled = true
             }
+        }else {
+            isUserInteractionEnabled = true
         }
         sendActionSelf(action, to: target, for: event)
     }

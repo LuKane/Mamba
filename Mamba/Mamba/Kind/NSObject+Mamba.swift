@@ -45,5 +45,4 @@ extension NSObject {
     func className() -> String {
         return NSString.init(utf8String: class_getName(type(of: self)))! as String
     }
-    
 }
