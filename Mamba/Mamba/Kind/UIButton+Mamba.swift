@@ -16,6 +16,7 @@ private var defaultBtnTime: TimeInterval = 0.0
 
 extension UIButton {
     
+    /// set delayTime
     var delayTime: TimeInterval {
         set {
             objc_setAssociatedObject(self, &delayTimeKey, newValue, .OBJC_ASSOCIATION_ASSIGN)
